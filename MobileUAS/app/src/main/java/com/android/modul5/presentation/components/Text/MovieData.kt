@@ -31,14 +31,5 @@ fun MovieData(title: String, content: Any?) {
     Spacer(modifier = Modifier.height(8.dp))
 }
 
-//@Composable
-//fun Title(title: String) {
-//    Text(
-//        text = title,
-//        fontWeight = FontWeight.W600,
-//        style = MaterialTheme.typography.titleLarge
-//    )
-//}
-
 
 

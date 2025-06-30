@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 fun TitleFirst(title: String) {
     Text(
         text = title,
+        color = MaterialTheme.colorScheme.primary,
         style = MaterialTheme.typography.titleLarge,
         fontWeight = FontWeight.W600,
         modifier = Modifier.padding(vertical = 12.dp)

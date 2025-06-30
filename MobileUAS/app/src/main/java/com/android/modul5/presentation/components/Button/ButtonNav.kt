@@ -21,7 +21,6 @@ fun ButtonNav(action: String, navController: NavController) {
     ) {
         Button(
             onClick = {
-//                if (action == "Detail") {navController.navigate("movie_detail/${movieId}")}
                 navController.popBackStack()
             },
             shape = MaterialTheme.shapes.small,

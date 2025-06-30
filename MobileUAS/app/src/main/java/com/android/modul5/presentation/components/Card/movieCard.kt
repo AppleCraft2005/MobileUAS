@@ -51,8 +51,6 @@ fun MovieCard(movieItem: Movie, navController: NavController) {
                 Text(movieItem.originalLanguage)
             }
         }
-//        Spacer(modifier = Modifier.height(15.dp))
-////        ButtonNav("Detail", navController, movieItem.id)
         Spacer(modifier = Modifier.height(10.dp))
     }
 }

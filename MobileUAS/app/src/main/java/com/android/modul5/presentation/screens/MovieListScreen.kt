@@ -22,7 +22,6 @@ import com.android.modul5.presentation.viewmodel.MovieViewModel
 import com.android.modul5.presentation.components.Text.TitleFirst
 import com.android.modul5.presentation.components.LottieAnimation.noInternetAnimate
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MovieListScreen(movieViewModel: MovieViewModel, navController: NavController) {
     val Movies by movieViewModel.Movies.collectAsState()
@@ -55,7 +54,7 @@ fun MovieListScreen(movieViewModel: MovieViewModel, navController: NavController
         }
         else {
             Column {
-                TitleFirst("Popular Movies 🔥")
+                TitleFirst("Popular 🔥")
                 LazyRow(
                     modifier = Modifier.height(385.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -64,7 +63,7 @@ fun MovieListScreen(movieViewModel: MovieViewModel, navController: NavController
                         MovieCard(movieItem = Movies[movie], navController = navController)
                     }
                 }
-                TitleFirst("Indonesia Movies \uD83C\uDDEE\uD83C\uDDE9")
+                TitleFirst("Indonesia \uD83C\uDDEE\uD83C\uDDE9")
                 LazyRow(
                     modifier = Modifier.height(385.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -73,7 +72,7 @@ fun MovieListScreen(movieViewModel: MovieViewModel, navController: NavController
                         MovieCard(movieItem = IndonesiaMovies[movie], navController = navController)
                     }
                 }
-                TitleFirst("Anime Movies \uD83C\uDF38")
+                TitleFirst("Anime \uD83C\uDF38")
                 LazyRow(
                     modifier = Modifier.height(385.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),

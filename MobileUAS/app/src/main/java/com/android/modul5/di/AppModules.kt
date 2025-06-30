@@ -7,7 +7,6 @@ import com.android.modul5.domain.repository.MovieRepository
 import com.android.modul5.domain.usecase.AddFavMovieUseCase
 import com.android.modul5.domain.usecase.CheckFavMovieUseCase
 import com.android.modul5.domain.usecase.GetAnimeMoviesUseCase
-import com.android.modul5.domain.usecase.GetFavMovieDetailUseCase
 import com.android.modul5.domain.usecase.GetFavoriteMoviesUseCase
 import com.android.modul5.domain.usecase.GetIndonesiaMovieUseCase
 import com.android.modul5.domain.usecase.GetMovieDetailUseCase
@@ -33,7 +32,6 @@ val appModule = module {
     factory { GetIndonesiaMovieUseCase(get()) }
     factory { GetMovieDetailUseCase(get ()) }
     factory { GetFavoriteMoviesUseCase(get ()) }
-    factory { GetFavMovieDetailUseCase(get()) }
     factory { SearchMoviesUseCase(get ()) }
     factory { AddFavMovieUseCase(get ()) }
     factory { RemoveFavMovieUseCase(get ()) }
@@ -49,13 +47,10 @@ val appModule = module {
         removeFavMovieUseCase = get()
     ) }
     viewModel { MovieSearchViewModel(searchMoviesUseCase = get ()) }
-    viewModel {
-        MovieDetailViewModel(
+    viewModel { MovieDetailViewModel(
             addFavMovieUseCase = get(),
             removeFavMovieUseCase = get(),
             checkFavMovieUseCase = get(),
             getMovieDetailUseCase = get(),
-            getFavMovieDetailUseCase = get()
-        )
-    }
+    ) }
 }

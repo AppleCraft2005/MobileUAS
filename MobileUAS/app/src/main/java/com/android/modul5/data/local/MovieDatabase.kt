@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 import com.android.modul5.data.local.entity.MovieEntity
 import com.android.modul5.data.local.utils.Converter
 
-@Database(entities = [MovieEntity::class], version = 4, exportSchema = false)
+@Database(entities = [MovieEntity::class], version = 5, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class MovieDatabase: RoomDatabase() {
     abstract fun favoriteMovieDAO(): FavoriteMovieDAO

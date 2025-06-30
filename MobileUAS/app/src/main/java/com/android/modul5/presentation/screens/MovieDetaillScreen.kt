@@ -45,8 +45,6 @@ fun MovieDetailScreen(movieId: Int, movieDetalViewModel: MovieDetailViewModel, n
     val isFavorite by movieDetalViewModel.isFavorite.collectAsState()
     val errMsg by movieDetalViewModel.errorMsg.collectAsState()
     val isLoading by movieDetalViewModel.isLoading.collectAsState()
-//    val genreList = movieDetail?.genre
-//    val genreNames = genreList?.map { it.name }?.joinToString(", ")
 
     LaunchedEffect(movieId) {
         movieDetalViewModel.fetchMoviebyDetailbyID(movieId)
@@ -55,7 +53,7 @@ fun MovieDetailScreen(movieId: Int, movieDetalViewModel: MovieDetailViewModel, n
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -74,9 +72,7 @@ fun MovieDetailScreen(movieId: Int, movieDetalViewModel: MovieDetailViewModel, n
         }
         else {
             Glide(movieDetail?.posterPath)
-            Spacer(modifier = Modifier.height(10.dp))
             TitleFirst("${movieDetail?.title}")
-            Spacer(modifier = Modifier.height(10.dp))
             IconButton(onClick = {movieDetalViewModel.onFavoriteClicked()}) {
                 Icon(
                     imageVector =  Icons.Default.Star,
@@ -90,13 +86,13 @@ fun MovieDetailScreen(movieId: Int, movieDetalViewModel: MovieDetailViewModel, n
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-//                    Desc("Genre",genreNames )
-                    MovieData("Tanggal Rilis", movieDetail?.releaseDate)
-                    MovieData("Negara Asal", movieDetail?.originCountry)
-                    MovieData("Durasi"," ${ movieDetail?.runtime } menit")
+                    MovieData("Genre",movieDetail?.genre?.map { it.name }?.joinToString() )
+                    MovieData("Release Date", movieDetail?.releaseDate)
+                    MovieData("Origin Country", movieDetail?.originCountry?.joinToString())
+                    MovieData("Duration"," ${ movieDetail?.runtime } menit")
                     MovieData("Status", movieDetail?.status)
-                    MovieData("Popularitas", movieDetail?.popularity)
-                    MovieData("Rata-rata Vote", movieDetail?.voteAverage)
+                    MovieData("Popularity", "%.2f".format(movieDetail?.popularity) )
+                    MovieData("Vote Average", "%.2f".format(movieDetail?.voteAverage))
                 }
             }
 
@@ -122,9 +118,7 @@ fun MovieDetailScreen(movieId: Int, movieDetalViewModel: MovieDetailViewModel, n
                     )
                 }
             }
-
             Spacer(modifier = Modifier.height(10.dp))
-//            Spacer(modifier = Modifier.height(10.dp))
         }
         ButtonNav("Kembali", navController)
     }

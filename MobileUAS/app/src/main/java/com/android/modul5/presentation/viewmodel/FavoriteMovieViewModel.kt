@@ -15,7 +15,6 @@ class FavoriteMovieViewModel(
     private val getFavoriteMoviesUseCase: GetFavoriteMoviesUseCase,
     private val removeFavMovieUseCase: RemoveFavMovieUseCase
 ): ViewModel() {
-//    val favoriteMovies: StateFlow<List<Movie>> = getFavoriteMoviesUseCase()
     val favoriteMovies: StateFlow<List<MovieDetail>> = getFavoriteMoviesUseCase()
         .stateIn(
             scope = viewModelScope,

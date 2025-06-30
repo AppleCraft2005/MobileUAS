@@ -28,7 +28,6 @@ fun MovieSearchScreen( searchViewModel: MovieSearchViewModel, navController: Nav
     val searchQuery by searchViewModel.searchQuery.collectAsState()
     val searchResult by searchViewModel.searchResults.collectAsState()
     val isLoading by searchViewModel.isLoading.collectAsState()
-    val errMsg by searchViewModel.errMsg.collectAsState()
 
     Column(
         modifier = Modifier
@@ -45,23 +44,14 @@ fun MovieSearchScreen( searchViewModel: MovieSearchViewModel, navController: Nav
                 .fillMaxWidth()
                 .padding(bottom = 12.dp)
         )
-
-        if(searchQuery.isNotBlank() && searchResult.isEmpty()){
-            Text("No Movies Found!")
-        }
-        else if (errMsg != null) {
-            if(errMsg == "No Internet Connection") {
-                noInternetAnimate()
-            }
-            else {
-                Text(errMsg!!)
-            }
-        }
-        else if (searchQuery.isBlank()) {
+        if (searchQuery.isBlank()) {
             waitingAnimate()
         }
         else if (isLoading) {
             CircularProgressIndicator(modifier = Modifier.padding(16.dp))
+        }
+        else if(searchQuery.isNotBlank() && searchResult.isEmpty()){
+            Text("No Movies Found!")
         }
         else {
             LazyVerticalGrid(

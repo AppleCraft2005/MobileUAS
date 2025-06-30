@@ -50,15 +50,15 @@ fun MovieCardDetail(movieItem: MovieDetail, onFavClick: (Int) -> Unit) {
                     tint = Color.Yellow
                 )
             }
+            MovieData("Genre", movieItem.genre.map { it.name }.joinToString())
             Row {
                 Column(modifier = Modifier.weight(1f)) {
-//                    Desc("Genre",genreNames )
-                    MovieData("Tanggal Rilis", movieItem.releaseDate)
-                    MovieData("Negara Asal", movieItem.originCountry)
-                    MovieData("Durasi"," ${ movieItem.runtime } menit")
+                    MovieData("Release Date", movieItem.releaseDate)
+                    MovieData("Origin Country", movieItem.originCountry.joinToString())
+                    MovieData("Duration"," ${ movieItem.runtime } menit")
                     MovieData("Status", movieItem.status)
-                    MovieData("Popularitas", movieItem.popularity)
-                    MovieData("Rata-rata Vote", movieItem.voteAverage)
+                    MovieData("Popularity", "%.2f".format(movieItem.popularity) )
+                    MovieData("Vote Average", "%.2f".format(movieItem.voteAverage))
                 }
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
@@ -77,8 +77,6 @@ fun MovieCardDetail(movieItem: MovieDetail, onFavClick: (Int) -> Unit) {
                 }
             }
         }
-//        Spacer(modifier = Modifier.height(15.dp))
-////        ButtonNav("Detail", navController, movieItem.id)
         Spacer(modifier = Modifier.height(15.dp))
     }
 }

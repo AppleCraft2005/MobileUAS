@@ -35,7 +35,7 @@ fun NavMovies(isDarkMode: Boolean, onToggle: (Boolean) -> Unit) {
     )
 
     Scaffold(
-        topBar = { TopBar("SIMOVIE") },
+        topBar = { TopBar("MovieLens") },
         bottomBar = {
             BottomNavigationBar(navController = navController, navItems = navItems)
         }
@@ -44,18 +44,6 @@ fun NavMovies(isDarkMode: Boolean, onToggle: (Boolean) -> Unit) {
             navController = navController,
             startDestination = BottomNavigationItem.Home.route,
             modifier = Modifier.padding(innerPadding),
-//            enterTransition = {
-//                slideInHorizontally(initialOffsetX = { it })
-//            },
-//            exitTransition = {
-//                slideOutHorizontally(targetOffsetX = { -it })
-//            },
-//            popEnterTransition = {
-//                slideInHorizontally(initialOffsetX = { -it })
-//            },
-//            popExitTransition = {
-//                slideOutHorizontally(targetOffsetX = { it })
-//            }
         ) {
             composable(BottomNavigationItem.Home.route) {
                 MovieListScreen(movieViewModel = movieViewModel, navController = navController)

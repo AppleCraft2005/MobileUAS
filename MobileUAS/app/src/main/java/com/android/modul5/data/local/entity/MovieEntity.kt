@@ -2,6 +2,7 @@ package com.android.modul5.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.android.modul5.domain.model.Genre
 
 @Entity(tableName = "favorite_movies")
 data class MovieEntity(
@@ -17,5 +18,6 @@ data class MovieEntity(
     val voteAverage: Double = 0.0,
     val runtime: Int = 0,
     val status: String = "",
-    val tagline: String = ""
+    val tagline: String = "",
+    val genre: String = ""
 )
